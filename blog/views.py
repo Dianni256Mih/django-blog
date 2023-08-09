@@ -10,6 +10,6 @@ def index(request):
 
 # Define uma function view chamada ola.
 def ola(request):
-    return HttpResponse('Olá Django')
+    return render(request, 'home.html')
 
 
