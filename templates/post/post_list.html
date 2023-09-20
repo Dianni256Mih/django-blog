@@ -1,0 +1,19 @@
+{% extends '_layout1.html' %} {# herda tudo que já tem em _layout1.html #}
+{% block content %} {# substitui o bloco content em _layout1.html #}
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title">Listagem de Posts</h5>
+  </div>
+  <div class="card-body">
+    <a href="{% url 'post_add' %}" class="btn btn-primary mb-3">
+      + Novo post
+    </a>
+    {% for post in posts %}
+    <article>
+      <h2>Em: {{ post.pub_date|date:"d / m / Y" }}</h2>
+      <p>{{ post.body_text }}</p>
+    </article>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %} {# fecha o bloco content #}
