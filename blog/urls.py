@@ -1,7 +1,8 @@
 from django.urls import path
-from blog.views import (index, ola, post_show, PostDetailView, get_all_posts, get_post)
+from blog.views import (index, ola, post_show, PostDetailView, get_all_posts, get_post, PostCreateView, create_post)
 
 urlpatterns = [
+    path('', index, name= "index"),
     path('index/', index, name= "index"),
     path('ola/', ola, name= "ola"),
     path('posts/all', ola, name="posts_list"),
@@ -9,4 +10,6 @@ urlpatterns = [
     path('post/<int:pk>/show', PostDetailView.as_view(), name="post_detail"),
     path('api/posts', get_all_posts, name="posts_data"),
     path('api/posts/<int:post_id>', get_post, name="post_data"),
+    path('post/add', PostCreateView.as_view(), name="post_add"),
+    path('api/post/add', create_post, name="create_post_data")
 ]
