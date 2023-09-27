@@ -1,3 +1,4 @@
+from blog.forms import PostModelForm
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, ListView, TemplateView
 from django.urls import reverse_lazy
@@ -69,8 +70,9 @@ def get_post(request, post_id):
 class PostCreateView(CreateView):
     model = Post
     template_name = 'post/post_form.html'
-    fields = ('body_text', )
+   # fields = ('body_text', )
     success_url = reverse_lazy('posts_list')
+    form_class = PostModelForm
 
 @csrf_exempt
 def create_post(request):
