@@ -17,3 +17,7 @@
   </div>
 </div>
 {% endblock %} {# fecha o bloco content #}
+
+{% if post.categoria %}
+  <span>Categoria: {{ post.categoria }}</span>
+{% endif %}

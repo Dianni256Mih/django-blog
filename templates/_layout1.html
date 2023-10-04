@@ -24,6 +24,7 @@ bg-white border-bottom shadow-sm">
 {% endblock %}
 {% block main %}
 <div class="container">
+    {% include 'messages.html' %}
     {% block content %}
     <p>Conteúdo padrão...</p>
     {% endblock content %}
