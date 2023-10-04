@@ -1,0 +1,21 @@
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Enviar</button>
+</form>
+
+{% extends '_layout1.html' %} {# herda tudo que já tem em _layout1.html #}
+{% block content %} {# substitui o bloco content em _layout1.html #}
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title">Acessar</h5>
+  </div>
+  <div class="card-body">
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-success">Enviar</button>
+    </form>
+  </div>
+</div>
+{% endblock %} {# fechar o bloco content #}

@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from blog.forms import PostModelForm
 from django.views.decorators.csrf import csrf_exempt
@@ -15,6 +17,7 @@ from django.shortcuts import render,  get_object_or_404
 from django.http import HttpResponse
 
 # Define uma function view chamada index.
+@login_required # controle de acesso usando o decorador de função
 def index(request):
 #   return HttpResponse('Ola Django - index')
     return render(request, 'index.html', {'titulo': 'Últimos Artigos'})# novo retorno
@@ -68,7 +71,7 @@ def get_post(request, post_id):
     response['Access-Control-Allow-Origin'] = '*' # requisição de qualquer origem
     return response
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     template_name = 'post/post_form.html'
    # fields = ('body_text', )
