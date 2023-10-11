@@ -1,0 +1,23 @@
+{% extends '_layout1.html' %}
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title">Editar Perfil</h5>
+  </div>
+  <div class="card-body">
+    <form method="post" enctype="multipart/form-data"> {# obrigatório no upload #}
+      {% csrf_token %}
+      {{ form.as_p }}
+      <p>
+        {% if user.imagem.url is not None %}
+      <h5>Imagem atual:</h5>
+      <img src="{{ user.imagem.url }}" style="height: 150px;">
+      {% else %}
+      <span class="alert-warning">Não há imagem.</span>
+      {% endif %}
+      </p>
+      <button type="submit" class="btn btn-success">Salvar</button>
+    </form>
+  </div>
+</div>
+{% endblock %} {# fechar o bloco content #}

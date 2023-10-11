@@ -13,5 +13,6 @@ urlpatterns = [
     path('post/add', PostCreateView.as_view(), name="post_add"),
     path('api/post/add', create_post, name="create_post_data"),
     path('posts', PostListView.as_view(), name="posts_all"),
-    path('about-us', SobreTemplateView.as_view(), name="about_page")
+    path('about-us', SobreTemplateView.as_view(), name="about_page"),
+    path('account/<int:pk>/edit', views.AccountUpdateView.as_view(), name="account_edit")
 ]

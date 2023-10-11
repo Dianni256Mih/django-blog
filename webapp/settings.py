@@ -145,3 +145,6 @@ LOGIN_REDIRECT_URL = '/admin'
 LOGOUT_REDIRECT_URL = '/admin'
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+MEDIA_URL = '/media/' # Caminho para servir os arquivos de mídia
+MEDIA_ROOT = os.path.join(BASE_DIR, 'files/') # Armazenamento dos arquivos
