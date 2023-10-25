@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from blog.forms import PostModelForm
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import CreateView, ListView, TemplateView, UpdateView
+from django.views.generic import CreateView, ListView, TemplateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 import json
@@ -140,3 +140,12 @@ def form_valid(self, form):
     return super(PostUpdateView, self).form_valid(form)
 
 
+class PostDeleteView(LoginRequiredMixin, DeleteView):
+    model = Post
+    template_name = 'post/post_confirm_delete_form.html'
+    success_url = reverse_lazy('posts_all')
+    success_message = 'A postagem foi excluída com sucesso.'
+    
+    def form_valid(self, form):
+        messages.success(self.request, self.success_message)
+        return super(PostDeleteView, self).form_valid(form)
