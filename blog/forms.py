@@ -24,12 +24,13 @@ class PostModelForm(forms.ModelForm):
     super(PostModelForm, self).__init__(*args, **kwargs)
     # Configura um valor inicial para o campo pub_date
     self.fields['pub_date'].initial = datetime.today()
+  
   class Meta: # é uma classe mas está dentro do PostModelForm
     # Vincula o model Post ao Form e define os campos a exibir
     model = Post
     fields = ('body_text', 'pub_date', 'categoria')
     widgets = {
-    'pub_date': forms.widgets.DateInput(attrs={'type': 'date'}),
+    'pub_date': forms.widgets.DateInput(format='%Y-%m-%d', attrs={'type': 'date'}),
     'categoria': forms.RadioSelect(),
     }
     labels = { 'body_text': '', 'categoria': 'Assunto'}
