@@ -22,6 +22,12 @@
   <span>Categoria: {{ post.categoria }}</span>
 {% endif %}
 
+  {% if post.autor %}
+    <span>Autor: {{ post.categoria }}</span>
+{% else $}
+    <span>Autor: Desconhecido</span>
+{% endif %}
+
 <a href="{% url 'post_edit' pk=post.id %}" class="link-secondary">
   Editar
 </a>
