@@ -5,3 +5,13 @@
   <p>{{ post.body_text }}</p>
 </article>
 {% endblock %} <!-- fecha o bloco content -->
+
+<div class="'card-body">
+  <form action="{% url 'post_send' post_id=post.id %}" method="post">
+    {% csrf_token %}
+    <label for="'email">Compartilhar</label>
+    <input type="text" id="email" name='email' placeholder="'informe o email"
+    value=""/>
+    <button type="submit" class="btn btn-warning">Enviar</button>
+  </form>
+</div>
